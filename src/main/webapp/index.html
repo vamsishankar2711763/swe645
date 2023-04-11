@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+<body>
+  
+
+<nav>
+  <ul>
+    <li><a href="homepage.html">Home</a></li>
+    
+  </ul>
+</nav>
+
+<div class="container">
+  <h1 class="">STUDENT SURVEY FORM</h1>
+  <p><b> * Marks Mandatory Fields</b> </p>
+  <form method="get">
+    
+  
+  <br>
+
+      <!--<div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    -->
+
+    <!-- Input Fields -->
+      <b><p>First Name *</p></b>
+      <input type="text" class="form-control" autofocus="autofocus" placeholder="Enter First Name" required><br>
+      <b> <p>Last Name *</p></b>
+      <input type="text" class="form-control" placeholder="Enter Last Name" required><br>
+      <b><p>Street Address *</p></b>
+      <input type="text" class="form-control" placeholder="Enter your address" required><br>
+      <b><p>City</p></b>
+      <input type="text" class="form-control" placeholder="Enter your city" ><br>
+      <b><p>State</p></b>
+      <input type="text" class="form-control" placeholder="Enter your state"><br>
+      <b><p>ZIP code *</p></b>
+      <input type="number" class="form-control" placeholder="Eg: 12345" pattern="[0-9]{5}" required><br>
+      <b><p>Telephone Number*</p></b>
+      <input type="number" class="form-control" placeholder="Enter your phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
+      <b><p>Email *</p></b>
+      <input type="email" class="form-control" placeholder="Enter your email" required><br>
+      <b><p>LinkedIn Link</p></b>
+      <input type="url" class="form-control" placeholder="Paste your URL"><br>
+      <b><p>Date of Survey</p></b>
+      <input type="date" class="form-control" ><br>
+
+ 
+
+
+<label for="raffle">Raffle</label><br>
+<input type="text" class="form-control" id="raffle" name="raffle" pattern="[0-9]+([,][0-9]+){9,}" placeholder="Enter atleast ten comma (,) separated numbers ranging from 1 through 100." required><br>
+
+
+
+          <br>
+          <br>
+       <!-- Questions -->   
+  <label>What did you like most about the campus? *</label><br>
+  <input type="checkbox" id="students" name="like_opt1" value="students">
+  <label for="students">Students</label><br>
+  <input type="checkbox" id="location" name="like_opt2" value="location">
+  <label for="location">Location</label><br>
+  <input type="checkbox" id="campus" name="like_opt3" value="campus">
+  <label for="campus">Campus</label><br>
+  <input type="checkbox" id="sports" name="like_opt6" value="sports">
+  <label for="sports">Sports</label><br>
+  <input type="checkbox" id="atmosphere" name="like_opt4" value="atmosphere">
+  <label for="atmosphere">Atmosphere</label><br>
+  <input type="checkbox" id="dormRooms" name="like_opt5" value="dormRooms">
+  <label for="dormRooms">Dorm Rooms</label><br>
+<br>
+<br>
+          
+         <p class="text-left"><strong>How did you become interested in the university? *</strong></p>
+
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio4Example1" />
+            <label class="form-check-label" for="radio4Example1">
+              Internet
+            </label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio4Example2" />
+            <label class="form-check-label" for="radio4Example2">
+              Friends
+            </label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio4Example3" />
+            <label class="form-check-label" for="radio4Example3">
+              Television
+            </label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio4Example4" />
+            <label class="form-check-label" for="radio4Example4">
+              Others
+            </label>
+          </div>
+          <br>
+          <br>
+
+          <label for="recommendation">How likely are you to recommend this school to other prospective students? *</label>
+          <select id="recommendation" name="recommendation">
+          <option value="blank"> </option>
+          <option value="vLikely">Very Likely</option>
+          <option value="likely">Likely</option>
+          <option value="unlikely">Unlikely</option>
+          </select>
+          <br>
+          <br>
+          
+          <p class="text-left mb-2" placeholder="Enter text here ~~~"><strong>Additional Comments</strong></p>
+
+          <!-- Message input -->
+          <div class="form-outline mb-40">
+            <textarea class="form-control mb-40" id="form4Example4" rows="4" placeholder="Enter text here~~~"></textarea>
+          </div>
+        <div class="container mt-10">
+  
+        <div class="d-grid gap-5">
+        <button type="button" class="btn btn-success btn-block">SUBMIT</button>
+        <button type="button" class="btn btn-secondary btn-block">CLOSE</button>
+        </div>
+      </div>
+
+
+        </form>
+
+
+</div>
+ 
+
+      
+
+</body>
+</html>
