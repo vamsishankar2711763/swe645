@@ -1,11 +1,9 @@
-//This file with create a CI/CD pipeline for building and deploying the dcoker image to k8 cluster using Github as source control version.
-
+//Jenkins File
 pipeline{
-    
     environment {
-	    	registry = "srivallivajha/studentsurvey645"
+	    	registry = "vsimhadr/studentsurvey645"
         registryCredential = 'dockerhub'
-        def dateTag = new Date().format("yyyyMMdd-HHmmss")
+	     def dateTag = new Date().format("yyyyMMdd-HHmmss")
 	}
 agent any
   stages{
@@ -13,11 +11,8 @@ agent any
             steps {
                 script {
                     sh 'rm -rf *.war'
-                    sh 'jar -cvf SurveyForm.war -C src/main/webapp .'
-                    docker.withRegistry('',registryCredential){
-                      def img = docker.build('srivallivajha/studentsurvey645:'+ dateTag)
-                   }
-                    
+                    sh 'jar -cvf Survey.war -C src/main/webapp .'
+
                }
             }
         }
@@ -25,7 +20,7 @@ agent any
             steps {
                 script {
                     docker.withRegistry('',registryCredential) {
-                        def image = docker.build('srivallivajha/studentsurvey645:'+ dateTag, '. --no-cache')
+                        def image = docker.build('vsimhadr/studentsurvey645:'+ dateTag)
                         docker.withRegistry('',registryCredential) {
                             image.push()
                         }
@@ -36,11 +31,12 @@ agent any
      stage('Deploying to single node in Rancher') {
          steps {
             script{
-               sh 'kubectl set image deployment/deploy1 container-0=srivallivajha/studentsurvey645:'+dateTag
-               sh 'kubectl set image deployment/deploylb container-0=srivallivajha/studentsurvey645:'+dateTag
+               sh 'kubectl set image deployment/deployment1 container-0=vsimhadr/studentsurvey645:'+ dateTag
+	       sh 'kubectl set image deployment/deployment2 container-0=vsimhadr/studentsurvey645:'+dateTag	    
             }
          }
       }
+   
   }
  
   post {
