@@ -1,9 +1,11 @@
-//Jenkinsfile creates a CI/CD pipeline for building and deploying the docker image to k8 cluster using Github as source control version
+//This file with create a CI/CD pipeline for building and deploying the dcoker image to k8 cluster using Github as source control version.
 
 pipeline{
+    
     environment {
-	    	registry = "vsimhadr/survey645"
+	    	registry = "srivallivajha/studentsurvey645"
         registryCredential = 'dockerhub'
+        def dateTag = new Date().format("yyyyMMdd-HHmmss")
 	}
 agent any
   stages{
@@ -11,8 +13,11 @@ agent any
             steps {
                 script {
                     sh 'rm -rf *.war'
-                    sh 'jar -cvf Survey.war -C src/main/webapp .'
-
+                    sh 'jar -cvf SurveyForm.war -C src/main/webapp .'
+                    docker.withRegistry('',registryCredential){
+                      def img = docker.build('srivallivajha/studentsurvey645:'+ dateTag)
+                   }
+                    
                }
             }
         }
@@ -20,7 +25,7 @@ agent any
             steps {
                 script {
                     docker.withRegistry('',registryCredential) {
-                        def image = docker.build('vsimhadr/survey645:latest', '.')
+                        def image = docker.build('srivallivajha/studentsurvey645:'+ dateTag, '. --no-cache')
                         docker.withRegistry('',registryCredential) {
                             image.push()
                         }
@@ -31,11 +36,11 @@ agent any
      stage('Deploying to single node in Rancher') {
          steps {
             script{
-               sh 'kubectl set image deployment/deploy1 container-0=vsimhadr/survey645:latest'
+               sh 'kubectl set image deployment/deploy1 container-0=srivallivajha/studentsurvey645:'+dateTag
+               sh 'kubectl set image deployment/deploylb container-0=srivallivajha/studentsurvey645:'+dateTag
             }
          }
       }
-   
   }
  
   post {
